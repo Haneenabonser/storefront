@@ -14,26 +14,26 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     const { type, payload } = action;
-
+  
     switch (type) {
-        case 'ChangeActive':
-            const modified = state.products.filter(item => {
-                return item.category === payload
-            })
-            return {
-                products: state.products,
-                activeProducts: modified
-            }
-        default:
-            return state;
+      case 'ChangeActive':
+        const modified = state.products.filter(item => {
+          return item.category === payload
+        })
+        return {
+          products: state.products,
+          activeProducts: modified
+        }
+      default:
+        return state;
     }
-
-}
-
-
-export function getItems(name) {
+  
+  }
+  
+  
+  export function getItems(name) {
     return {
-        type: 'ChangeActive',
-        payload: name
+      type: 'ChangeActive',
+      payload: name
     }
-}
+  }

@@ -49,4 +49,4 @@ const mapDispatchToProps = {
     getItems,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps)(Products)
