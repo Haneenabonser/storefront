@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
     const { payload, type } = action;
 
     switch (type) {
-        case 'CHANGE_ACTIVE':
+        case 'ChangeActive':
             let modified = {};
 
             state.categories.forEach(item => {
@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action) {
 
 export function changeSelected(name) {
     return {
-        type: 'CHANGE_ACTIVE',
+        type: 'ChangeActive',
         payload: name
     }
 }
