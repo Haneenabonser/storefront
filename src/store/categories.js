@@ -4,7 +4,7 @@ const initialState = {
         { name: 'Electronics', description: 'Here you can find a lot of Electronic products' },
         { name: 'Food', description: 'Here you can find a lot of food choices' }
     ],
-    selectedCategory: {},
+    activeCategory: {},
 }
 
 export default function reducer(state = initialState, action) {
@@ -12,17 +12,17 @@ export default function reducer(state = initialState, action) {
     const { payload, type } = action;
 
     switch (type) {
-        case 'ChangeSelected':
-            let newCategory = {};
+        case 'CHANGE_ACTIVE':
+            let modified = {};
 
             state.categories.forEach(item => {
                 if (item.name === payload) {
-                    newCategory = item;
+                    modified = item;
                 }
             });
             return {
                 categories: state.categories,
-                selectedCategory: newCategory
+                activeCategory: modified
             };
         default:
             return state;
@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action) {
 
 export function changeSelected(name) {
     return {
-        type: 'ChangeSelected',
+        type: 'CHANGE_ACTIVE',
         payload: name
     }
 }
