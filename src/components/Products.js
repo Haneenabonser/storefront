@@ -1,8 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { getItems } from '../store/products';
+import { getItems, changeBasketItems } from '../store/products';
+import { addItemsToCart } from '../store/cart';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles({
     root: {
@@ -17,10 +19,17 @@ const useStyles = makeStyles({
 
 function Products(props) {
     const classes = useStyles();
+
+    function handleAdding(element) {
+        props.addItemsToCart(element);
+        props.changeBasketItems(element);
+        props.getItems(props.category.name);
+    }
+
     return (
         <>
-            {props.activeProducts.map(element => {
-                return <Card className={classes.root} style={{ display: 'inline-block', marginLeft: '25%', height: '5%', width: '40%', marginTop: '3%' }}>
+            {props.products.activeProducts.map(element => {
+                return <Card className={classes.root} style={{ display: 'inline-block', marginLeft: '9%', height: '5%', width: '40%', marginTop: '3%', marginBottom: '3%' }}>
                     <CardActionArea>
                         <CardMedia
                             className={classes.media}
@@ -36,6 +45,12 @@ function Products(props) {
                             </Typography>
                         </CardContent>
                     </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary" onClick={() => { handleAdding(element) }}>
+                            <AddShoppingCartIcon></AddShoppingCartIcon>
+                            Add To Cart
+                        </Button>
+                    </CardActions>
                 </Card>
             })}
 
@@ -43,10 +58,16 @@ function Products(props) {
     )
 }
 function mapStateToProps(state) {
-    return state.products;
+    return {
+        category: state.categories.activeCategory,
+        products: state.products,
+        cartProducts: state.cart
+    };
 }
 const mapDispatchToProps = {
     getItems,
+    addItemsToCart,
+    changeBasketItems
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)

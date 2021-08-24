@@ -1,4 +1,6 @@
 import React from 'react'
+import { Navbar, Container, Nav} from 'react-bootstrap';
+
 // import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 // import { MenuIcon } from '@material-ui/icons/Menu'
 // import { makeStyles } from '@material-ui/core/styles';
@@ -20,7 +22,13 @@ function Footer() {
 
     return (
         <div>
-            <p>CopyRights &copy; Haneen</p>
+            <div>
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand style={{ marginLeft:'37%', fontSize:'15px', color: 'GrayText'}}>CopyRights &copy;Haneen's 2021</Navbar.Brand>
+                </Container>
+            </Navbar>
+        </div>
             {/* <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -35,5 +43,5 @@ function Footer() {
     )
 }
 
-export default Footer
+export default Footer;
 
