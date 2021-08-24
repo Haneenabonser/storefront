@@ -2,21 +2,26 @@ import React from 'react';
 import { useEffect } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { changeSelected } from '../store/categories';
 import { getItems } from '../store/products';
 
 
+
 function Categories(props) {
-    
+
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        props.changeSelected("Electronics");
-    }, [])
+        dispatch(changeSelected("Electronics"))
+    }, [dispatch])
+
 
     return (
         <>
             <Breadcrumbs aria-label="breadcrumb" style={{ marginLeft: '42%', marginTop: '1%', fontSize: '25px' }}>
-                {props.categories.map((element,idx) => {
+                {props.categories.map((element, idx) => {
 
                     return <Link color="inherit" key={idx} onClick={() => { props.changeSelected(element.name) }}>
                         {element.name}
