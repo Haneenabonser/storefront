@@ -8,7 +8,7 @@ import { getItems } from '../store/products';
 
 
 function Categories(props) {
-
+    
     useEffect(() => {
         props.changeSelected("Electronics");
     }, [])
@@ -16,15 +16,15 @@ function Categories(props) {
     return (
         <>
             <Breadcrumbs aria-label="breadcrumb" style={{ marginLeft: '42%', marginTop: '1%', fontSize: '25px' }}>
-                {props.categories.map(element => {
+                {props.categories.map((element,idx) => {
 
-                    return <Link color="inherit" onClick={() => { props.changeSelected(element.name) }}>
+                    return <Link color="inherit" key={idx} onClick={() => { props.changeSelected(element.name) }}>
                         {element.name}
                     </Link>
                 })}
             </Breadcrumbs>
-            <div style={{ fontSize: '50px', marginTop: '3%', textAlign:'center' }}>{props.activeCategory.name}</div>
-            <div style={{ fontSize: '25px', marginTop: '2%', color: 'GrayText', textAlign:'center' }}>{props.activeCategory.description}</div>
+            <div style={{ fontSize: '50px', marginTop: '3%', textAlign: 'center' }}>{props.activeCategory.name}</div>
+            <div style={{ fontSize: '25px', marginTop: '2%', color: 'GrayText', textAlign: 'center' }}>{props.activeCategory.description}</div>
         </>
     )
 }

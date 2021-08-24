@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
             }
         case 'Change-Basket-Items':
             const afterAddItem = state.products.map((element) => {
-                if ( element.basketCount > 0 && element.name == payload.name) {
+                if ( element.basketCount > 0 && element.name === payload.name) {
                     element.basketCount = element.basketCount - 1;
                 }
                 if (element.basketCount === 0) {

@@ -24,7 +24,7 @@ function Cart(props) {
     function handleList() {
         let basket = [];
 
-        props.cart.map((element) => {
+        props.cart.forEach((element) => {
             if (basket.includes(element)) {
                 basket.forEach(item => {
                     if (element.name === item.name) {
