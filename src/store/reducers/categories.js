@@ -1,9 +1,6 @@
 
 const initialState = {
-    categories: [
-        { name: 'Electronics', description: 'Here you can find a lot of Electronic products' },
-        { name: 'Food', description: 'Here you can find a lot of food choices' }
-    ],
+    categories: [],
     activeCategory: {},
 }
 
@@ -24,15 +21,11 @@ export default function reducer(state = initialState, action) {
                 categories: state.categories,
                 activeCategory: modified
             };
+        case 'LOAD_CATEGORY':
+            return { ...state, categories: payload };
         default:
             return state;
     }
 }
 
 
-export function changeSelected(name) {
-    return {
-        type: 'ChangeActive',
-        payload: name
-    }
-}

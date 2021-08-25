@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { getItems, changeBasketItems } from '../store/products';
-import { addItemsToCart } from '../store/cart';
+import { getItems, changeBasketItems, addItemsToCart } from '../store/actions/action';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles({
@@ -33,7 +32,7 @@ function Products(props) {
                     <CardActionArea>
                         <CardMedia
                             className={classes.media}
-                            image={element.image}
+                            image={`https://source.unsplash.com/random?${element.name}`}
                             title={element.name}
                         />
                         <CardContent>
@@ -42,6 +41,9 @@ function Products(props) {
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
                                 {element.description}
+                            </Typography>
+                            <Typography variant="body2" color="textPrimary" component="h3" >
+                                Items In Stock: ({element.inStock})
                             </Typography>
                         </CardContent>
                     </CardActionArea>
