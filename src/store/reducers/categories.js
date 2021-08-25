@@ -1,6 +1,9 @@
-
 const initialState = {
-    categories: [],
+    categories: [
+        { category: 'electronics', name: "ELECRTRONICS", description: 'Here you can find a lot of Electronic products' },
+        { category: 'mobile', name: "MOBILE PHONES", description: 'Here you can find a lot of MOBILE PHONES' },
+        { category: 'food', name: "FOOD", description: 'Here you can find a lot of food' },
+    ],
     activeCategory: {},
 }
 
@@ -13,7 +16,7 @@ export default function reducer(state = initialState, action) {
             let modified = {};
 
             state.categories.forEach(item => {
-                if (item.name === payload) {
+                if (item.category === payload) {
                     modified = item;
                 }
             });
@@ -21,11 +24,7 @@ export default function reducer(state = initialState, action) {
                 categories: state.categories,
                 activeCategory: modified
             };
-        case 'LOAD_CATEGORY':
-            return { ...state, categories: payload };
         default:
             return state;
     }
 }
-
-

@@ -1,25 +1,14 @@
 ## Store
 
 ### Reqiurements
-- Phase 2 Requirements               
-In phase 2, we will be adding the “Add to Cart” feature to our application, which will allow our users to not only browse items in the store, but also select them and have them persist in their “shopping cart” for later purchase.
-    - As a user, I want to choose from products in the list and add them to my shopping cart.
-    - As a user, I want to see the products that I’ve added to my shopping cart so that.
-    - As a user, I want to change the quantity of items I intend to purchase in my shopping cart.
-    - As a user, I want to be able to remove an item from my shopping cart.                             
-       
+- Phase 3 Requirements
+In phase 3, we will be connecting our Virtual Store to a live API so that our data is persistent and able to be separately managed.
 
-- Application Flow:
-    - User sees a list of categories
-    - Chooses a category and sees a list of products
-    - Clicks the “Add to Cart” button on any product
-    - Clicks the “Cart” link in the header
-    - Sees a list of all products in the cart
-    - Clicks the delete button on an item and sees the item removed
-    - Changes the quantity selector on an item and sees the cart total change
-
+    - As a user, I want to interact with live inventory so that I have confidence that the displayed products are in stock
+    - As a user, I want to know to that when I add an item to my cart, that it is removed from inventory so that no other users can purchase it.
+    
 ### links
 - Deployed link on Netlify: https://haneen-store.netlify.app/ 
 
 ### UML
-![uml](./lab37.jpg)
+![uml](./lab38.jpg)

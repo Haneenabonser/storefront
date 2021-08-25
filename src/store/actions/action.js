@@ -1,27 +1,15 @@
 import axios from 'axios';
 
-export const getCategories = () => {
-    return async (dispatch) => {
-        const raw = await axios.get('https://api-js401.herokuapp.com/api/v1/categories');
-        dispatch(loadCategory(raw.data.results));
-    };
-};
-
-export const loadCategory = (payload) => {
-    return {
-        type: 'LOAD_CATEGORY',
-        payload,
-    };
-};
-
-
-export const getData = (category) => {
+// get the products from api
+export const getData = () => {
     return async (dispatch) => {
         const res = await axios.get('https://api-js401.herokuapp.com/api/v1/products');
-        dispatch(handleApiData(category, res.data.results));
+        dispatch(handleApiData(res.data.results));
         console.log(res.data);
     };
 };
+
+// load the products
 export const handleApiData = (payload) => {
     return {
         type: 'LOAD_PRODUCTS',
@@ -29,13 +17,15 @@ export const handleApiData = (payload) => {
     };
 };
 
+// change active products
 export function getItems(name) {
     return {
-        type: 'ChangeActive',
+        type: 'changeActive',
         payload: name
     }
 }
 
+// change the inStock items (reducing)
 export function changeBasketItems(product) {
     return {
         type: 'Change-Basket-Items',
@@ -43,17 +33,20 @@ export function changeBasketItems(product) {
     }
 }
 
-export function changeSelected(name) {
+// change the active category
+export function changeSelected(category) {
     return {
         type: 'ChangeActive',
-        payload: name
+        payload: category
     }
 }
 
+// add items to the cart
 export function addItemsToCart(product) {
     return {
         type: 'AddItemsCart',
         payload: product
     }
 };
+
 

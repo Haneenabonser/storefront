@@ -14,17 +14,17 @@ function Categories(props) {
 
     useEffect(() => {
         dispatch(getData()).then(() => {
-            dispatch(changeSelected("Electronics"))
+            dispatch(changeSelected("electronics"))
         })
     }, [dispatch])
 
 
     return (
         <>
-            <Breadcrumbs aria-label="breadcrumb" style={{ marginLeft: '42%', marginTop: '1%', fontSize: '25px' }}>
+            <Breadcrumbs aria-label="breadcrumb" style={{ marginLeft: '31%', marginTop: '1%', fontSize: '25px' }}>
                 {props.categories.map((element, idx) => {
 
-                    return <Link color="inherit" key={idx} onClick={() => { dispatch(changeSelected(element.name)) }}>
+                    return <Link color="inherit" key={idx} onClick={() => { dispatch(changeSelected(element.category)) }}>
                         {element.name}
                     </Link>
                 })}

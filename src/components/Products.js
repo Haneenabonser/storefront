@@ -39,9 +39,9 @@ function Products(props) {
                             <Typography gutterBottom variant="h5" component="h2">
                                 {element.name} - ${element.price}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
+                            {/* <Typography variant="body2" color="textSecondary" component="p">
                                 {element.description}
-                            </Typography>
+                            </Typography> */}
                             <Typography variant="body2" color="textPrimary" component="h3" >
                                 Items In Stock: ({element.inStock})
                             </Typography>
