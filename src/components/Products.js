@@ -43,6 +43,9 @@ function Products(props) {
                             <Typography variant="body2" color="textSecondary" component="p">
                                 {element.description}
                             </Typography>
+                            <Typography variant="body2" color="textPrimary" component="h3" >
+                                Items In Stock: ({element.basketCount})
+                            </Typography>
                         </CardContent>
                     </CardActionArea>
                     <CardActions>
