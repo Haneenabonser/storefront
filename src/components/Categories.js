@@ -4,8 +4,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
-import { changeSelected } from '../store/categories';
-import { getItems } from '../store/products';
+import { changeSelected, getData } from '../store/actions/action';
 
 
 
@@ -14,16 +13,18 @@ function Categories(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(changeSelected("Electronics"))
+        dispatch(getData()).then(() => {
+            dispatch(changeSelected("electronics"))
+        })
     }, [dispatch])
 
 
     return (
         <>
-            <Breadcrumbs aria-label="breadcrumb" style={{ marginLeft: '42%', marginTop: '1%', fontSize: '25px' }}>
+            <Breadcrumbs aria-label="breadcrumb" style={{ marginLeft: '31%', marginTop: '1%', fontSize: '25px' }}>
                 {props.categories.map((element, idx) => {
 
-                    return <Link color="inherit" key={idx} onClick={() => { props.changeSelected(element.name) }}>
+                    return <Link color="inherit" key={idx} onClick={() => { dispatch(changeSelected(element.category)) }}>
                         {element.name}
                     </Link>
                 })}
@@ -38,9 +39,5 @@ const mapStateToProps = (state) => {
     return state.categories;
 }
 
-const mapDispatchToProps = {
-    changeSelected,
-    getItems
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default connect(mapStateToProps)(Categories);
